@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\Controller;
+
 class MicropostsController extends Controller
 {
     public function index()
@@ -11,7 +13,7 @@ class MicropostsController extends Controller
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $microposts = $user->$microposts()->orderBy('created_at', 'desc')->paginate(10);
+            $microposts = $user->microposts()->orderBy('created_at', 'desc')->paginate(10);
             
             $data = [
                 'user' => $user,
@@ -23,7 +25,7 @@ class MicropostsController extends Controller
             return view('welcome');
         }
     }
-    public function store(Request $request)
+    public function store(Request $request) //Requestライブラリを使う宣言
     {
         $this->validate($request, [
             'content' => 'required|max:191',
