@@ -19,7 +19,7 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
+    // useによってまとめた機能(RegistersUsers)をそのまま取り込んでいる。トレイト呼ぶ
     use RegistersUsers;
 
     /**
@@ -27,6 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
+     //　ログイン後のリダイレクト先をトップページに指定している。リダイレクトとは別のページに転送すること
     protected $redirectTo = '/';
 
     /**
@@ -34,9 +35,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
+    // construct 事前に設定しておく条件を指定。ミドルウェアを設定している
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest')->except('logout');
     }
 
     /**

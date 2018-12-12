@@ -17,7 +17,7 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
+   //トレイトを呼び出す
     use AuthenticatesUsers;
 
     /**

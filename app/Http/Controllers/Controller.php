@@ -11,15 +11,18 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
+    //全てのコントローラーにカウント数を提供できる
     public  function counts($user) {
         $count_microposts = $user->microposts()->count();
         $count_followings = $user->followings()->count();
         $count_followers = $user->followers()->count();
+        $count_favoritings = $user->favoritings()->count();
         
         return [
             'count_microposts' => $count_microposts,
             'count_followings' => $count_followings,
             'count_followers' => $count_followers,
+            'count_favoritings' => $count_favoritings,
         ];
     }
     

@@ -15,9 +15,12 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+     // handle()は全てのミドルウェアが持っているもので、設定されたルーティングにアクセスされたときに呼び出される
+    public function handle($request, Closure $next, $guard = null) 
+    //$requestはリクエストの情報を管理するRequestインスタンスが渡される、$nextはクロージャクラス（無名クラスを表す）これを呼び出して実行することで
+    //ミドルウェアからアプリケーションへと送られるリクエスト（Requestインスタンス）を作成することができる
     {
-        if (Auth::guard($guard)->check()) {
+        if (Auth::guard($guard)->check()) {   // ログインしているかチェックしている。ログインしているのにログインページにアクセスしようとすると/にリダイレクトする
             return redirect('/');
         }
 

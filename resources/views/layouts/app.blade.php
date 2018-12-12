@@ -13,12 +13,12 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        @include('commons.navbar')
+        @include('commons.navbar') {{-- サブビュー　commonsフォルダのナビバーファイルを表示する --}}
 
         <div class="container">
-            @include('commons.error_messages')
+            @include('commons.error_messages') {{-- commonsフォルダのエラーメッセージを表示する --}}
 
-            @yield('content')
+            @yield('content') {{-- セクションの内容をはめこんで表示する --}}
         </div>
     </body>
 </html>

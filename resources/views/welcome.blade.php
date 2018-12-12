@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.app') {{-- layoutsフォルダのappファイルを親レイアウトとして継承する --}}
 
-@section('content')
+@section('content') {{-- appファイルのyield部分にセクションをはめ込む。  --}}
     @if (Auth::check())
         <div class="row">
             <aside class="col-xs-4">
@@ -20,11 +20,12 @@
             </div>
         </div>
     @else
-        <div class="center jumbotron">
+        <div class="center jumbotron">>
             <div class="text-center">
                 <h1>Welcome to the Microposts</h1>
-                {!! link_to_route('signup.get','Sign up now!' , null, ['class' => 'btn btn-lg btn-primary']) !!}
+                {!! link_to_route('signup.get','Sign up now!' , null, ['class' => 'btn btn-lg btn-primary']) !!} 
+                {{--link_to_route 引数　ルーティング名、リンクにしたい文字列、URLのパラメータに代入したい値、HTMLタグの属性を配列形式で指定 --}} 
             </div>
-        </div>
+        </div
     @endif
 @endsection
